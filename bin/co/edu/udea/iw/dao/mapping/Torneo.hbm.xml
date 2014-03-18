@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    	<class name="co.edu.udea.iw.dto.ToTorneo" table="TO_Torneo">
+
+        <id name="toId" type="int">
+            <column name="To_Id" />
+            <generator class="assigned" />
+        </id>
+        <property name="toNombre" type="string">
+            <column name="TO_Nombre" length="100" not-null="true" />
+        </property>
+         <property name="toUriimagen" type="string">
+            <column name="TO_URIIMAGEN" length="200" not-null="true" />
+        </property>
+        </class>
+</hibernate-mapping>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="co.edu.udea.iw.dto.PaPartido" table="PA_Partido">
+		<composite-id name="id" class="co.edu.udea.iw.dto.PaPartidoId">
+			<key-many-to-one name="paEqIdVisitante" class="co.edu.udea.iw.dto.EqEquipo">
+				<column name="PA_EQ_IdVisitante" />
+			</key-many-to-one>
+			
+			<key-many-to-one name="paEqIdLocal" class="co.edu.udea.iw.dto.EqEquipo">
+				<column name="PA_EQ_IdLocal" />
+			</key-many-to-one>
+			
+			<key-property name="paFecha" type="date">
+				<column name="PA_Fecha" length="10" />
+			</key-property>
+		</composite-id>
+		
+		<many-to-one name="toTorneo" class="co.edu.udea.iw.dto.ToTorneo" fetch="select">
+			<column name="PA_TO_Id" not-null="true" />
+		</many-to-one>
+	
+		<property name="paHora" type="time">
+			<column name="PA_Hora" length="8" not-null="true" />
+		</property>
+		<property name="paNroGolVis" type="int">
+			<column name="PA_NroGolVis" />
+		</property>
+		<property name="paNroGolLoc" type="int">
+			<column name="PA_NroGolLoc" />
+		</property>
+	</class>
+</hibernate-mapping>

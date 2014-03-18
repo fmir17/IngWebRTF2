@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    	<class name="co.edu.udea.iw.dto.EqEquipo" table="EQ_Equipo">
+
+        <id name="eqId" type="int">
+            <column name="EQ_Id" />
+            <generator class="assigned" />
+        </id>
+        <property name="eqNombre" type="string">
+            <column name="EQ_Nombre" length="45" not-null="true" />
+        </property>
+            </class>
+</hibernate-mapping>

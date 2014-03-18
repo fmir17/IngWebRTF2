@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="co.edu.udea.iw.dto.PmPuntosmes" table="PM_PuntosMes">
+
+    <!-- Mapeo para cuando la clave primaria es compuesta -->
+        <composite-id name="id" class="co.edu.udea.iw.dto.PmPuntosmesId">
+            
+            <key-property name="usMes" type="int">
+        		<column name="US_Mes" length="2"/>
+        	</key-property>
+        	
+        	<key-property name="usAnno" type="int">
+        		<column name="US_Anno" length="4"/>
+        	</key-property>
+        	
+        	<key-many-to-one name="usuario" class="co.edu.udea.iw.dto.UsUsuario">
+        		<column name="US_Nombre" length="50"/>
+        	</key-many-to-one>
+        	
+        </composite-id>
+        
+        <property name="usPtos" type="int">
+            <column name="US_ptos" length="5" not-null="true"/>
+        </property>
+                
+    </class>
+</hibernate-mapping>

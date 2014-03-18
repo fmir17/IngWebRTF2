@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="co.edu.udea.iw.dto.UsUsuario" table="US_USUARIO">
+    
+        <id name="usNombre" type="string">
+            <column name="US_Nombre" length="50"/>
+        </id>
+        <property name="usEmail" type="string">
+            <column name="US_Email" length="100" not-null="true"/>
+        </property>
+        <property name="usPassword" type="string">
+            <column name="US_Password" length="32" not-null="true"/>
+        </property>
+        <property name="usTipo" type="string">
+            <column name="US_Tipo" length="5" not-null="true"/>
+        </property>
+        
+        <set name="puntosMes" inverse ="true" lazy="true" fetch="join">
+  		    <key>
+  		        <column name="us_Nombre"></column>
+  		    </key>
+  		    <one-to-many class="co.edu.udea.iw.dto.PmPuntosmes"/>
+  		</set>
+
+    </class>
+</hibernate-mapping>

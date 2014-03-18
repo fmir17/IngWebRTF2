@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="co.edu.udea.iw.dto.PrPronostico" table="PR_PRONOSTICO" >
+     
+        
+        <composite-id name="id" class="co.edu.udea.iw.dto.PrPronosticoId">
+            <key-property name="prUsNombre" type="string">
+                <column name="PR_US_Nombre" length="50" />
+            </key-property>
+            <key-property name="prPaEqIdVisitante" type="int">
+                <column name="PR_PA_EQ_IdVisitante" />
+            </key-property>
+            <key-property name="prPaEqIdLocal" type="int">
+                <column name="PR_PA_EQ_IdLocal" />
+            </key-property>
+            <key-property name="prPaFecha" type="date">
+                <column name="PR_PA_Fecha" length="10" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="usUsuario" class="co.edu.udea.iw.dto.UsUsuario" update="false" insert="false" fetch="select">
+            <column name="PR_US_Nombre" length="50" not-null="true" />
+        </many-to-one>
+        <many-to-one name="paPartido" class="co.edu.udea.iw.dto.PaPartido" update="false" insert="false" fetch="select">
+            <column name="PR_PA_EQ_IdVisitante" not-null="true" />
+            <column name="PR_PA_EQ_IdLocal" not-null="true" />
+            <column name="PR_PA_Fecha" length="10" not-null="true" />
+        </many-to-one>
+        <property name="prNroGolVis" type="int">
+            <column name="PR_NroGolVis" not-null="true" />
+        </property>
+        <property name="prNroGolLoc" type="int">
+            <column name="PR_NroGolLoc" not-null="true" />
+        </property>
+        <property name="prFechaHoraPro" type="date">
+            <column name="PR_FechaHoraPro" length="19" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
